@@ -1,0 +1,32 @@
+{
+  "name": "@m7i/compare-localization",
+  "version": "0.0.0",
+  "description": "A cli tool to compare two localization file and chcek for missing tokens",
+  "main": "src/index.js",
+  "bin": {
+    "@m7i/compare-localization": "bin/compare-localization",
+    "compare-localization": "bin/compare-localization"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "compare-localization"
+  ],
+  "author": "Sina Mirhejazi",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^4.1.0",
+    "chalk": "^2.4.2",
+    "esm": "^3.2.22",
+    "execa": "^1.0.0",
+    "inquirer": "^6.3.1",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  }
+}
