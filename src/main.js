@@ -14,6 +14,10 @@ function checkForAdditionalTokens(primary, secondary) {
 
 }
 
+async function loadFile(dir) {
+ return require(dir);
+}
+
 export async function compareFiles({ primary, secondary }) {
  const currentFileUrl = import.meta.url;
  const primaryDir = path.resolve(
@@ -40,13 +44,10 @@ export async function compareFiles({ primary, secondary }) {
     process.exit(1);
   }
 
- console.log('Loading primary file');
- await copyTemplateFiles(options);
-
  const tasks = new Listr([
     {
-      title: 'Copy project files',
-      task: () => copyTemplateFiles(options),
+      title: 'Loading primary file',
+      task: () => loadFile(primaryDir),
     },
   ]);
  
