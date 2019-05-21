@@ -10,7 +10,7 @@ function parseArgumentsIntoOptions(rawArgs) {
    }
  );
  return {
-   main: args._[0],
+   primary: args._[0],
    secondary: args._[1],
  };
 }
