@@ -37,21 +37,26 @@ function checkForAdditionalTokens(primaryContent, secondaryContent, path = '') {
 }
 
 function printArray(array) {
+  if(!array.length) {
+    console.log(chalk.bgWhite.black('Nothing to show'));
+    return;
+  }
+
   array.forEach((item, index) => {
     console.log(`${index+1}. %s`, chalk.bgWhite.black(item.substr(1)));
   });
 }
 
-async function loadFile(dir) {
+function loadFile(dir) {
   return require(dir).default;
 }
 
 async function loadPrimaryFile(dir) {
-  primaryFileContent = await loadFile(dir);
+  primaryFileContent = loadFile(dir);
 }
 
 async function loadSecondaryFile(dir) {
-  secondaryFileContent = await loadFile(dir);
+  secondaryFileContent = loadFile(dir);
 }
 
 async function testFiles({ primary, secondary }) {
@@ -104,7 +109,7 @@ export async function compareFiles({ primary, secondary }) {
    {
      title: 'Looking for additional tokens',
      task: async () => checkForAdditionalTokens(secondaryFileContent, primaryFileContent),
-   }
+   },
   ]);
  
   await tasks.run();
